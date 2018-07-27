@@ -14,7 +14,9 @@
     <h1> Cadastrar Produto </h1>
 
     <div> 
-        <form>
+        @using (Html.BeginForm())
+        { 
+   
             @Html.Label("Nome do Produto")
             @Html.TextBox("txtNome")<br>
 
@@ -28,7 +30,7 @@
             @Html.TextBox("txtCategoria")<br>
 
             <input type="submit" value="Cadastrar" />
-        </form>
-    </div>
+            }
+        </div>
 </body>
 </html>
