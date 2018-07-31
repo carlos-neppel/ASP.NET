@@ -21,7 +21,7 @@ namespace Ecommerce.Controllers
         public ActionResult CadastrarProduto()
         {
             return View();
-        } 
+        }
 
         [HttpPost]
         public ActionResult CadastrarProduto(string txtNome, string txtDescricao,
@@ -36,16 +36,11 @@ namespace Ecommerce.Controllers
             };
 
             ctx.Produtos.Add(produto);
-            ctx       
-           
+            ctx.SaveChanges();
 
-            
-        }
-
-        public ActionResult RemoverProduto(int id)
-        {
-            return View();
+            return RedirectToAction("Index", "Produto");
         }
 
     }
 }
+
