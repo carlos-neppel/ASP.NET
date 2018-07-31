@@ -35,12 +35,16 @@ namespace Ecommerce.Controllers
                 Categoria = txtCategoria
             };
 
+            ctx.Produtos.Add(produto);
+            ctx       
+           
 
             
-            ctx.Produtos.Add(produto);
-            ctx.SaveChanges();
+        }
 
-            return RedirectToAction("index", "Produto");
+        public ActionResult RemoverProduto(int id)
+        {
+            return View();
         }
 
     }
