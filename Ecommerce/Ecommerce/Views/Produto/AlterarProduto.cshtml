@@ -1,0 +1,44 @@
+﻿@using Ecommerce.Models
+
+@{
+
+    Layout = null;
+    Produto produto = ViewBag.Produto;
+}
+
+<h2></h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AlterarProduto</title>
+</head>
+<body>
+    <h1>Alterar Produto</h1>
+
+    <div>
+
+      
+        @using (Html.BeginForm())
+        {
+            @html.Hidden("TxtId", produto.ProdutoId, new {@disabled =""})<br/>
+
+            @Html.Label("Nome do Produto")
+            @Html.TextBox("txtNome", produto.Nome)<br/>
+
+            @Html.Label("Descriçao do Produto")
+            @Html.TextBox("txtDescricao", produto.Descricao)<br>
+
+            @Html.Label("Preço do Produto")
+            @Html.TextBox("txtPreco", produto.Preco)<br>
+
+            @Html.Label("Categoria do Produto")
+            @Html.TextBox("txtCategoria", produto.Categoria)<br>
+
+            <input type="submit" value="Salvar" />
+        }
+    </div>
+</body>
+</html>

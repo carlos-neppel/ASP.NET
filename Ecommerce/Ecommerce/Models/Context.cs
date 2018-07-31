@@ -1,4 +1,6 @@
-﻿namespace Ecommerce.Models
+﻿using System;
+
+namespace Ecommerce.Models
 {
     public class Context : DbContext
     {
@@ -6,5 +8,10 @@
 
         //Mapear as classes que vão virar tabela no banco
         public DbSet<Produto> Produtos { get; set; }
+
+        internal void SaveChages()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
