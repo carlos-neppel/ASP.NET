@@ -1,4 +1,5 @@
-﻿using Ecommerce.Models;
+﻿using Ecommerce.DAL;
+using Ecommerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,13 @@ namespace Ecommerce.Controllers
 {
     public class ProdutoController : Controller
     {
-        Context ctx = new Context();
+        private object ctx;
+
         // GET: Produto
         public ActionResult Index()
         {
             ViewBag.Data = DateTime.Now;
-            ViewBag.Produtos = ctx.Produtos.ToList();
+            ViewBag.Produtos = ProdutoDAO.RetornarProduto();
             return View();
         }
 
@@ -44,15 +46,13 @@ namespace Ecommerce.Controllers
 
         public ActionResult RemoverProduto(int id)
         {
-            Produto produto = ctx.Produtos.Find(id);
-            ctx.Produtos.Remove(produto);
-            ctx.SaveChages();
+            ProdutoDAO.RemoverProduto(id);
             return RedirectToAction("Index", "Produto");
         }
 
         public ActionResult AlterarProduto(int id)
         {
-            ViewBag.Produto = ctx.Produtos.Find(id);
+            ViewBag.Produto = ProdutoDAO.BuscarProdutoPorId(txtId)
             return View();
         }
 
@@ -60,15 +60,12 @@ namespace Ecommerce.Controllers
         public ActionResult AlterarProduto(string txtNome, string txtDescricao,
                                             string txtPreco, string txtCategoria, int txtId)
         {
-            Produto produto = ctx.Produtos.Find(txtId);
+            Produto produto = ProdutoDAO.BuscarProdutoPorId(txtId);
             produto.Nome = txtNome;
             produto.Descricao = txtDescricao;
             produto.Preco = Convert.ToDouble(txtPreco);
             produto.Categoria = txtCategoria;
-
-            ctx.Entry(produto).State = EmtityState.Modified;
-            ctx.SaveChages();
-
+            ProdutoDAO.AlterarProduto(produto);  
             return RedirectToAction("Index", "Produto");
         }
     }
