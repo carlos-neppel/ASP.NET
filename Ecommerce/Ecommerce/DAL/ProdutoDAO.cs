@@ -1,4 +1,5 @@
-﻿using Ecommerce.Models;
+﻿using Ecommerce.Controllers;
+using Ecommerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

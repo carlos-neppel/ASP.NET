@@ -1,38 +1,27 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml" ;
     DateTime data = ViewBag.Data;
     List<Ecommerce.Models.Produto> produtos = ViewBag.Produtos;
     }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Genciamento de Produtos</title>
-</head>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    @Html.ActionLink("Ecomerce - UP", "Index", "Produto", null, new { @Class = "navbar-brand" })
-
-</nav>
-<body>
-    <div id="Content" class="container" style="margin-top: 30px">
+    <div >
         <h1> Gerenciamento de Produtos</h1>
-        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        
 
         @*<a href="~/Views/Produto/Cadastrar"> Cadastrar Produto</a>*@
         @* Link em Mvc Razor*@
         @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")
 
 
-        <table>
+        <table class="table table-hover table-striped" style="margin-top: 30px">
+
             <tr>
                 <th>Nome</th>
                 <th>Descricao</th>
                 <th>Preco</th>
                 <th>Categoria</th>
+                <th></th>
+                <th></th>
 
             </tr>
             @foreach (Ecommerce.Models.Produto produtoCadastrado in produtos)
@@ -59,15 +48,7 @@
         </table>
 
 
-        @data
+       <p> Dados Atualizdos às @data </p> 
     </div>
-    <hr style="margin-top: 30px"/>
-    <footer style="text-align: center">
+    
 
-        <p>&copy; @DateTime.Now.Year - Desenvolvido por Carlos Alexandre Neppel</p>
-    </footer>
-</body>
-
-
-
-</html>
