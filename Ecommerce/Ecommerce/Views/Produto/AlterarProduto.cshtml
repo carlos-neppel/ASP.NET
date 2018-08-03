@@ -5,27 +5,44 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     Produto produto = ViewBag.Produto;
 }
-    <h1>Alterar Produto</h1>
+    
 
     <div>
 
       
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("CadastarProduto", "Produto", FormMethod.Post, new { @class = "Form-horizontal" }))
         {
-            @html.Hidden("TxtId", produto.ProdutoId, new {@disabled =""})<br/>
-
-            @Html.Label("Nome do Produto")
-            @Html.TextBox("txtNome", produto.Nome)<br/>
-
-            @Html.Label("Descriçao do Produto")
-            @Html.TextBox("txtDescricao", produto.Descricao)<br>
-
-            @Html.Label("Preço do Produto")
-            @Html.TextBox("txtPreco", produto.Preco)<br>
-
-            @Html.Label("Categoria do Produto")
-            @Html.TextBox("txtCategoria", produto.Categoria)<br>
-
-            <input type="submit" value="Salvar" />
-        }
+            <fieldset>
+                <legend>Alterar Produto</legend>
+                <div class="form-group">
+                    @Html.Label("Nome do Produto", new {@class= "control-label col-sm-2" })
+                    <div class = "col-sm-10">
+                        @Html.TextBox("txtNome", null, new {@class = "form-control", @placeholder = "Nome do produto"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Descrição do Produto", new { @class = "control-label col-sm-3" })
+                    <div class="col-sm-10">
+                        @Html.TextBox("txtDescricao", null, new { @class = "form-control", @placeholder = "Descrição do produto" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Preço do Produto", new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-10">
+                        @Html.TextBox("txtPreco", null, new { @class = "form-control", @placeholder = "Preço do produto" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Categoria do Produto", new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-10">
+                        @Html.TextBox("txtCategoria", null, new { @class = "form-control", @placeholder = "Categoria do produto" })
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <imput type= "submit" value ="Cadastrar" class="btn btn-primary">
+                    </div>
+                </div>            
+            </fieldset>
+        }    
     </div>

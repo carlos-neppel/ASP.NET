@@ -2,24 +2,41 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <h1> Cadastrar Produto </h1>
 
-    <div> 
-        @using (Html.BeginForm())
-        { 
-   
-            @Html.Label("Nome do Produto")
-            @Html.TextBox("txtNome")<br>
+<head>
+    <title>Cadastrar Produto</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+    
 
-            @Html.Label("Descriçao do Produto")
-            @Html.TextBox("txtDescricao")<br>
+    <div class="container">
+        <h1> Cadastrar Produto </h1>
+        <form action="">
+            <div class="form-group">
+                <label for="txtNome">Nome:</label>
+                <imput type ="Nome" class="form-control" id="Nome" placeholder ="Enter Nome" name="nome "/>
+            </div>
+            <div class="form-group">
+                <label for="txtDescricao">Descricao:</label>
+                <imput type="Descricao" class="form-control" id="Descricao" placeholder="Enter Descricao" name="Descricao" />
+            </div>
+            <div class="form-group">
+                <label for="txtPreco">Preco:</label>
+                <imput type="Preco" class="form-control" id="Preco" placeholder="Enter Preco" name="Preco" />
+            </div>
+            <div class="form-group">
+                <label for="txtCategoria">Categoria:</label>
+                <imput type="Categoria" class="form-control" id="Categoria" placeholder="Enter categoria" name="Categoria" />
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+            
+</div>
 
-            @Html.Label("Preço do Produto")
-            @Html.TextBox("txtPreco")<br>
+        </form>
 
-            @Html.Label("Categoria do Produto")
-            @Html.TextBox("txtCategoria")<br>
+        
 
-            <input type="submit" value="Cadastrar" />
-            }
-        </div>
