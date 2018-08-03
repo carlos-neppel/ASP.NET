@@ -132,7 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\EmtityState.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAL\ProdutoDAO.cs" />
     <Compile Include="Global.asax.cs">
@@ -171,7 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807271351370_CriarBanco.resx">

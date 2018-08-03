@@ -10,8 +10,6 @@ namespace Ecommerce.Controllers
 {
     public class ProdutoController : Controller
     {
-        private object ctx;
-
         // GET: Produto
         public ActionResult Index()
         {
@@ -36,10 +34,7 @@ namespace Ecommerce.Controllers
                 Preco = Convert.ToDouble(txtPreco),
                 Categoria = txtCategoria
             };
-
-            ctx.Produtos.Add(produto);
-            ctx.SaveChages();
-
+            ProdutoDAO.CadastrarProduto(produto);
             return RedirectToAction("Index", "Produto");
         }
 
@@ -52,13 +47,13 @@ namespace Ecommerce.Controllers
 
         public ActionResult AlterarProduto(int id)
         {
-            ViewBag.Produto = ProdutoDAO.BuscarProdutoPorId(txtId)
+            ViewBag.Produto = ProdutoDAO.BuscarProdutoPorId(id);
             return View();
         }
 
         [HttpPost]
         public ActionResult AlterarProduto(string txtNome, string txtDescricao,
-                                            string txtPreco, string txtCategoria, int txtId)
+                               string txtPreco, string txtCategoria, int txtId)
         {
             Produto produto = ProdutoDAO.BuscarProdutoPorId(txtId);
             produto.Nome = txtNome;
