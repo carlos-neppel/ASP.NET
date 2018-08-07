@@ -15,6 +15,7 @@ namespace Ecommerce.DAL
         public static List<Produto> RetornarProdutos()
         {
             return ctx.Produtos.ToList();
+
         }
 
 
@@ -33,13 +34,13 @@ namespace Ecommerce.DAL
 
         public static Produto BuscarProdutoPorNome(Produto produto)
         {
-            return ctx.Produtos.FirstOrdefault(x => x.Nome.Equals(produto.Nome));
+            return ctx.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome));
         }
 
         public static void RemoverProduto(int id)
         {
             ctx.Produtos.Remove(BuscarProdutoPorId(id));
-            ctx.SaveChages();
+            ctx.SaveChanges();
 
         }
 
@@ -51,7 +52,7 @@ namespace Ecommerce.DAL
         public static void AlterarProduto(Produto produto)
         {
             ctx.Entry(produto).State = EntityState.Modified;
-            ctx.SaveChages();
+            ctx.SaveChanges();
         }
 
 
