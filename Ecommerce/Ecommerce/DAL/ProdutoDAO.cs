@@ -1,9 +1,9 @@
-﻿using Ecommerce.Controllers;
-using Ecommerce.Models;
+﻿using Ecommerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Web;
 
 namespace Ecommerce.DAL
 {
@@ -12,7 +12,7 @@ namespace Ecommerce.DAL
        private static Context ctx = new Context();
         private static object EntityState;
 
-        public static List<Produto> RetornarProduto()
+        public static List<Produto> RetornarProdutos()
         {
             return ctx.Produtos.ToList();
         }

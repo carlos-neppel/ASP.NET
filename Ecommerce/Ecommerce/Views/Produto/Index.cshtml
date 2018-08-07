@@ -1,11 +1,13 @@
-﻿
+﻿@using Ecommerce.Models
+@model List<Produto>
+
+
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml" ;
     DateTime data = ViewBag.Data;
     List<Ecommerce.Models.Produto> produtos = ViewBag.Produtos;
     }
     <div >
-        <h1> Gerenciamento de Produtos</h1>
+        <h2> Gerenciamento de Produtos</h2>
         
 
         @*<a href="~/Views/Produto/Cadastrar"> Cadastrar Produto</a>*@
@@ -24,7 +26,7 @@
                 <th></th>
 
             </tr>
-            @foreach (Ecommerce.Models.Produto produtoCadastrado in produtos)
+            @foreach (Ecommerce.Models.Produto produtoCadastrado in Model)
             {
                 <tr>
                     <td>@produtoCadastrado.Nome</td>

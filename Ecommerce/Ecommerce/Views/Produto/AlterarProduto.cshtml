@@ -1,48 +1,44 @@
 ﻿@using Ecommerce.Models
 
-@{
-
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    Produto produto = ViewBag.Produto;
-}
-    
+  
 
     <div>
 
       
-        @using (Html.BeginForm("CadastarProduto", "Produto", FormMethod.Post, new { @class = "Form-horizontal" }))
+        @using (Html.BeginForm("AlterarProduto", "Produto", FormMethod.Post, new { @class = "Form-horizontal" }))
         {
             <fieldset>
                 <legend>Alterar Produto</legend>
+                @Html.Hi
                 <div class="form-group">
-                    @Html.Label("Nome do Produto", new {@class= "control-label col-sm-2" })
-                    <div class = "col-sm-10">
-                        @Html.TextBox("txtNome", null, new {@class = "form-control", @placeholder = "Nome do produto"})
+                    @Html.Label("Nome do Produto", new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(Model => Model.nome, new { @class = "form-control", @placeholder = "Nome do produto" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.Label("Descrição do Produto", new { @class = "control-label col-sm-3" })
                     <div class="col-sm-10">
-                        @Html.TextBox("txtDescricao", null, new { @class = "form-control", @placeholder = "Descrição do produto" })
+                        @Html.TextBoxFor(Model => Model.Produto, new { @class = "form-control", @placeholder = "Descrição do produto" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.Label("Preço do Produto", new { @class = "control-label col-sm-2" })
                     <div class="col-sm-10">
-                        @Html.TextBox("txtPreco", null, new { @class = "form-control", @placeholder = "Preço do produto" })
+                        @Html.TextBoxFor(Model => Model.Preco, new { @class = "form-control", @placeholder = "Preço do produto" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.Label("Categoria do Produto", new { @class = "control-label col-sm-2" })
                     <div class="col-sm-10">
-                        @Html.TextBox("txtCategoria", null, new { @class = "form-control", @placeholder = "Categoria do produto" })
+                        @Html.TextBoxFor(Model => Model.Categoria, new { @class = "form-control", @placeholder = "Categoria do produto" })
                     </div>
                 </div>
                 <div class="form-group ">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <imput type= "submit" value ="Cadastrar" class="btn btn-primary">
+                        <imput type="submit" value="Salvar" class="btn btn-primary">
                     </div>
-                </div>            
+                </div>
             </fieldset>
-        }    
+        }
     </div>
