@@ -19,15 +19,32 @@ namespace Ecommerce.Controllers
 
         public ActionResult CadastrarProduto()
         {
+            
             return View();
         }
 
         [HttpPost]
         public ActionResult CadastrarProduto(Produto produto)
         {
-            ProdutoDAO.CadastrarProduto(produto);
-            return RedirectToAction("Index", "Produto");
+            if(ModelState.IsValid)
+                {
+
+                if (ProdutoDAO.CadastrarProduto(produto))
+                {
+                    return RedirectToAction("Index", "Produto");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Não é possivel add um produto com o mesmo nome!");
+                        return View(produto);
+                }
+            }
+            else
+            {
+                return View(produto);
+            }
         }
+            
 
 
         public ActionResult RemoverProduto(int id)

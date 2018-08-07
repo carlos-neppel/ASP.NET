@@ -5,30 +5,43 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
+
 namespace Ecommerce.DAL
 {
     public class ProdutoDAO
     {
-       private static Context ctx = new Context();
-        private static object EntityState;
+        private static Context ctx = new Context();
 
         public static List<Produto> RetornarProdutos()
         {
             return ctx.Produtos.ToList();
         }
 
-        public static void CadastrarProduto(Produto produto)
+
+        public static bool CadastrarProduto(Produto produto)
         {
-            ctx.Produtos.Add(produto);
-            ctx.SaveChages();
+            if(BuscarProdutoPorNome(produto) == null)
+            {
+                ctx.Produtos.Add(produto);
+                ctx.SaveChanges();
+
+                return true;
+            }
+            return false;
+           
+        }
+
+        public static Produto BuscarProdutoPorNome(Produto produto)
+        {
+            return ctx.Produtos.FirstOrdefault(x => x.Nome.Equals(produto.Nome));
         }
 
         public static void RemoverProduto(int id)
         {
-            ctx.Produtos.Remove (BuscarProdutoPorId(id));
+            ctx.Produtos.Remove(BuscarProdutoPorId(id));
             ctx.SaveChages();
 
-        } 
+        }
 
         public static Produto BuscarProdutoPorId(int id)
         {
@@ -41,6 +54,6 @@ namespace Ecommerce.DAL
             ctx.SaveChages();
         }
 
-        
+
     }
 }

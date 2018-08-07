@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
 
 namespace Ecommerce.Models
 {
@@ -9,9 +13,6 @@ namespace Ecommerce.Models
         //Mapear as classes que vão virar tabela no banco
         public DbSet<Produto> Produtos { get; set; }
 
-        internal void SaveChages()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
