@@ -1,12 +1,11 @@
-﻿@using Ecommerce.Models
-@model Ecommerce.Models.Produto
+﻿@model Ecommerce.Models.Produto
    
 
 
 <div>
 
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("CadastrarProduto", "Produto"))
     {
         <fieldset>
             <legend>Cadastrar Produto</legend>
