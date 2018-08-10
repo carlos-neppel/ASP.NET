@@ -1,9 +1,6 @@
 ﻿using Ecommerce.DAL;
 using Ecommerce.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Ecommerce.Controllers
@@ -63,12 +60,29 @@ namespace Ecommerce.Controllers
         {
             Produto produtoOriginal =
             ProdutoDAO.BuscarProdutoPorId(produtoAlterado.ProdutoId);
+
             produtoOriginal.Nome = produtoAlterado.Nome;
             produtoOriginal.Descricao = produtoAlterado.Descricao;
             produtoOriginal.Preco = produtoAlterado.Preco;
             produtoOriginal.Categoria = produtoAlterado.Categoria;
-            ProdutoDAO.AlterarProduto(produtoOriginal);  
-            return RedirectToAction("Index", "Produto");
+
+            if (ModelState.IsValid)
+            {
+                if(ProdutoDAO.AlterarProduto(produtoOriginal))
+                {
+                    return RedirectToAction("Index", "Produto");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Não é posível alterar um produto com o mesmo nome!");
+                    return View(produtoOriginal);
+                }
+            }
+            else
+            {
+                return View(produtoOriginal);
+            }
+          
         }
     }
 

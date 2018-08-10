@@ -1,9 +1,7 @@
 ﻿using Ecommerce.Models;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 
 
 namespace Ecommerce.DAL
@@ -15,7 +13,7 @@ namespace Ecommerce.DAL
         public static List<Produto> RetornarProdutos()
         {
             return ctx.Produtos.ToList();
-
+          
         }
 
 
@@ -49,10 +47,18 @@ namespace Ecommerce.DAL
             return ctx.Produtos.Find(id);
         }
 
-        public static void AlterarProduto(Produto produto)
+        public static bool AlterarProduto(Produto produto)
         {
-            ctx.Entry(produto).State = EntityState.Modified;
-            ctx.SaveChanges();
+            if(ctx.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome) &&
+                x.ProdutoId != produto.ProdutoId) == null)
+            {
+                ctx.Entry(produto).State = EntityState.Modified;
+                ctx.SaveChanges();
+                return true;
+            }
+
+            return false;
+            
         }
 
 
