@@ -1,17 +1,14 @@
 ﻿@using Ecommerce.Models
-@model  Produto
+@model Categoria
 
-
-  
-
-    <div>
-    @using (Html.BeginForm("AlterarProduto", "Produto", FormMethod.Post, new { @class = "form-horizontal" }))
+<div>
+    @using (Html.BeginForm("AlterarCategoria", "Categoria", FormMethod.Post, new { @class = "form-horizontal" }))
     {
         <fieldset>
-            <legend>Alterar Produto</legend>
+            <legend>Alterar Categoria</legend>
             @Html.ValidationSummary(true, null,
                 new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.ProdutoId)
+            @Html.HiddenFor(model => model.CategoriaId)
             <div class="form-group">
                 @Html.Label("Nome do produto",
                     new { @class = "control-label col-sm-2" })
@@ -38,36 +35,6 @@
                             @placeholder = "Descrição do produto"
                         })
                     @Html.ValidationMessageFor(model => model.Descricao, null,
-                        new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.Label("Preço do produto",
-                    new { @class = "control-label col-sm-2" })
-                <div class="col-sm-10">
-                    @Html.TextBoxFor(model => model.Preco,
-                        new
-                        {
-                            @class = "form-control",
-                            @placeholder = "Preço do produto"
-                        })
-                    @Html.ValidationMessageFor(model => model.Preco, null,
-                        new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.Label("Categoria do produto",
-                    new { @class = "control-label col-sm-2" })
-                <div class="col-sm-10">
-                    @Html.TextBoxFor(model => model.Categoria,
-                        new
-                        {
-                            @class = "form-control",
-                            @placeholder = "Categoria do produto"
-                        })
-                    @Html.ValidationMessageFor(model => model.Categoria, null,
                         new { @class = "text-danger" })
                 </div>
             </div>

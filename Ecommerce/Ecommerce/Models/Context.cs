@@ -12,7 +12,8 @@ namespace Ecommerce.Models
 
         //Mapear as classes que vão virar tabela no banco
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
 
-       
+
     }
 }

@@ -1,6 +1,11 @@
 ﻿using Ecommerce.DAL;
 using Ecommerce.Models;
 using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.IO;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Ecommerce.Controllers
@@ -11,29 +16,57 @@ namespace Ecommerce.Controllers
         public ActionResult Index()
         {
             ViewBag.Data = DateTime.Now;
-           return View(ProdutoDAO.RetornarProdutos());
+            return View(ProdutoDAO.RetornarProdutos());
         }
 
         public ActionResult CadastrarProduto()
         {
-            
+            ViewBag.Categorias =
+                new SelectList(CategoriaDAO.RetornarCategorias(),
+                "CategoriaId", "Nome");
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult CadastrarProduto(Produto produto)
+        public ActionResult CadastrarProduto(Produto produto,
+            int? Categorias, HttpPostedFileBase fupImagem)
         {
-            if(ModelState.IsValid)
-                {
+            ViewBag.Categorias =
+                new SelectList(CategoriaDAO.RetornarCategorias(),
+                "CategoriaId", "Nome");
 
-                if (ProdutoDAO.CadastrarProduto(produto))
+            if (ModelState.IsValid)
+            {
+                if (Categorias != null)
                 {
-                    return RedirectToAction("Index", "Produto");
+                    if (fupImagem != null)
+                    {
+                        string nomeImagem = Path.GetFileName(fupImagem.FileName);
+                        string caminho = Path.Combine(Server.MapPath("~/Images/"),
+                            nomeImagem);
+                        fupImagem.SaveAs(caminho);
+                        produto.Imagem = nomeImagem;
+                    }
+                    else
+                    {
+                        produto.Imagem = "semimagem.jpg";
+                    }
+                    produto.Categoria = CategoriaDAO.BuscarCategoriaPorId(Categorias);
+                    if (ProdutoDAO.CadastrarProduto(produto))
+                    {
+                        return RedirectToAction("Index", "Produto");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Não é possível adicionar um produto com o mesmo nome!");
+                        return View(produto);
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Não é possivel add um produto com o mesmo nome!");
-                        return View(produto);
+                    ModelState.AddModelError("", "Por favor, selecione uma categoria!");
+                    return View(produto);
                 }
             }
             else
@@ -41,8 +74,6 @@ namespace Ecommerce.Controllers
                 return View(produto);
             }
         }
-            
-
 
         public ActionResult RemoverProduto(int id)
         {
@@ -59,7 +90,7 @@ namespace Ecommerce.Controllers
         public ActionResult AlterarProduto(Produto produtoAlterado)
         {
             Produto produtoOriginal =
-            ProdutoDAO.BuscarProdutoPorId(produtoAlterado.ProdutoId);
+                ProdutoDAO.BuscarProdutoPorId(produtoAlterado.ProdutoId);
 
             produtoOriginal.Nome = produtoAlterado.Nome;
             produtoOriginal.Descricao = produtoAlterado.Descricao;
@@ -68,13 +99,13 @@ namespace Ecommerce.Controllers
 
             if (ModelState.IsValid)
             {
-                if(ProdutoDAO.AlterarProduto(produtoOriginal))
+                if (ProdutoDAO.AlterarProduto(produtoOriginal))
                 {
                     return RedirectToAction("Index", "Produto");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Não é posível alterar um produto com o mesmo nome!");
+                    ModelState.AddModelError("", "Não é possível alterar um produto com o mesmo nome!");
                     return View(produtoOriginal);
                 }
             }
@@ -82,10 +113,6 @@ namespace Ecommerce.Controllers
             {
                 return View(produtoOriginal);
             }
-          
         }
     }
-
-
 }
-
