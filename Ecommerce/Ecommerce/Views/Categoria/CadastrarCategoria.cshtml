@@ -1,7 +1,8 @@
 ﻿@model Ecommerce.Categoria
 
 <div>
-    @using (Html.BeginForm("CadastrarCategoria", "Categoria", FormMethod.Post, new { @class = "form-horizontal" }))
+    @using (Html.BeginForm("CadastrarCategoria", "Categoria",
+                                                                                                                FormMethod.Post, new { @class = "form-horizontal" }))
     {
         <fieldset>
             <legend>Cadastrar Categoria</legend>

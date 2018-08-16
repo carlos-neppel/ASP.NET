@@ -55,9 +55,10 @@ namespace Ecommerce.Controllers
         }
 
         [HttpPost]
-        public ActionResult AlterarCategoria(Categoria  categoriaAlterada)
+        public ActionResult AlterarCategoria(Categoria categoriaAlterada)
         {
-            Categoria categoriaOriginal = CategoriaDAO.BuscarCategoriaPorId(categoriaAlterada.CategoriaId);
+            Categoria categoriaOriginal =
+                CategoriaDAO.BuscarCategoriaPorId(categoriaAlterada.CategoriaId);
 
             categoriaOriginal.Nome = categoriaAlterada.Nome;
             categoriaOriginal.Descricao = categoriaAlterada.Descricao;

@@ -11,7 +11,7 @@ namespace Ecommerce.DAL
     {
         private static Context ctx = SingletonContext.GetInstance();
 
-        public  static List<Categoria> RetornarCategorias()
+        public static List<Categoria> RetornarCategorias()
         {
             return ctx.Categorias.ToList();
         }

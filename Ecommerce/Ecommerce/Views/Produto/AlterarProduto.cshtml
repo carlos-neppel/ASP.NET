@@ -1,10 +1,7 @@
 ﻿@using Ecommerce.Models
-@model  Produto
+@model Produto
 
-
-  
-
-    <div>
+<div>
     @using (Html.BeginForm("AlterarProduto", "Produto", FormMethod.Post, new { @class = "form-horizontal" }))
     {
         <fieldset>
@@ -80,3 +77,4 @@
         </fieldset>
     }
 </div>
+

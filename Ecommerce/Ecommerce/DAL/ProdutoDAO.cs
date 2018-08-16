@@ -1,8 +1,9 @@
 ﻿using Ecommerce.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-
+using System.Web;
 
 namespace Ecommerce.DAL
 {
@@ -10,9 +11,17 @@ namespace Ecommerce.DAL
     {
         private static Context ctx = SingletonContext.GetInstance();
 
-        public static List<Produto> RetornarProdutos()
+       
+        public static List<Produto> BuscarProdutosPorCategoria(int? id)
         {
-            return ctx.Produtos.Include("Categoria").ToList();
+            return ctx.Produtos.
+                Include("Categoria").Where(x => x.Categoria.CategoriaId == id).
+                ToList();
+        }
+
+        internal static List<Produto> RetornarProdutos()
+        {
+            return ctx.Produtos.Include("Categoria").ToList();            
         }
 
         public static bool CadastrarProduto(Produto produto)
