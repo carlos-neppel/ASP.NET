@@ -149,13 +149,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807271351370_CriarBanco.cs" />
-    <Compile Include="Migrations\201807271351370_CriarBanco.Designer.cs">
-      <DependentUpon>201807271351370_CriarBanco.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808071411574_table.cs" />
-    <Compile Include="Migrations\201808071411574_table.Designer.cs">
-      <DependentUpon>201808071411574_table.cs</DependentUpon>
+    <Compile Include="Migrations\201808171131361_Banco.cs" />
+    <Compile Include="Migrations\201808171131361_Banco.Designer.cs">
+      <DependentUpon>201808171131361_Banco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -177,12 +173,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\_viewstart.cshtml" />
     <Content Include="Views\Categoria\AlterarCategoria.cshtml" />
     <Content Include="Views\Categoria\CadastrarCategoria.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
     <Content Include="Views\Home\DetalheProduto.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\_viewstart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -195,11 +191,8 @@
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807271351370_CriarBanco.resx">
-      <DependentUpon>201807271351370_CriarBanco.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808071411574_table.resx">
-      <DependentUpon>201808071411574_table.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808171131361_Banco.resx">
+      <DependentUpon>201808171131361_Banco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
