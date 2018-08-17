@@ -21,8 +21,9 @@
             <br />
             @Model.Descricao<br />
             <b>Preço: </b>@Model.Preco.ToString("C2")<br />
-            <b>Categoria: </b>@Model.Categoria.Nome
-            <br />
+            <b>Categoria: </b>@Model.Categoria.Nome<br />
+            @Html.ActionLink("Adicionar", "AdiconarAoCarrinho", "Home", new { id = Model.ProdutoId },
+            new { @class = "btn btn-success" })
         </td>
     </tr>
 </table>

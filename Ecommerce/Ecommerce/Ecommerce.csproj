@@ -144,6 +144,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAL\CategoriaDAO.cs" />
+    <Compile Include="DAL\ItemVendaDAO.cs" />
     <Compile Include="DAL\ProdutoDAO.cs" />
     <Compile Include="DAL\SingletonContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -153,9 +154,14 @@
     <Compile Include="Migrations\201808171131361_Banco.Designer.cs">
       <DependentUpon>201808171131361_Banco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808171314189_AddTableItemVenda.cs" />
+    <Compile Include="Migrations\201808171314189_AddTableItemVenda.Designer.cs">
+      <DependentUpon>201808171314189_AddTableItemVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\ItemVenda.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -193,6 +199,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201808171131361_Banco.resx">
       <DependentUpon>201808171131361_Banco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171314189_AddTableItemVenda.resx">
+      <DependentUpon>201808171314189_AddTableItemVenda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

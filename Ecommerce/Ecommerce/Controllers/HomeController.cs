@@ -1,4 +1,5 @@
 ﻿using Ecommerce.DAL;
+using Ecommerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,23 @@ namespace EcommerceOsorioManha.Controllers
         {
             return View(ProdutoDAO.BuscarProdutoPorId(id));
         }
+
+        public ActionResult AdicionarAoCarrinho(int id)
+        {
+            Produto produto = ProdutoDAO.BuscarProdutoPorId(id);
+            ItemVenda itemVenda = new ItemVenda
+            {
+                Produto = ProdutoDAO.BuscarProdutoPorId(id),
+                Quantidade = 1,
+                Preco = produto.Preco,
+                Data = DateTime.Now
+
+            };
+            ItemVendaDAO.CadastrarItemVenda(itemVenda);
+
+            return RedirectToAction("CarrinhoCompras");
+        }
+
+
     }
 }
