@@ -158,6 +158,10 @@
     <Compile Include="Migrations\201808171314189_AddTableItemVenda.Designer.cs">
       <DependentUpon>201808171314189_AddTableItemVenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808171420290_itemvenda.cs" />
+    <Compile Include="Migrations\201808171420290_itemvenda.Designer.cs">
+      <DependentUpon>201808171420290_itemvenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Context.cs" />
@@ -202,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808171314189_AddTableItemVenda.resx">
       <DependentUpon>201808171314189_AddTableItemVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171420290_itemvenda.resx">
+      <DependentUpon>201808171420290_itemvenda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
