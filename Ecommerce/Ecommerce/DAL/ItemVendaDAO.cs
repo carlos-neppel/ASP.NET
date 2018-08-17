@@ -12,13 +12,13 @@ namespace Ecommerce.DAL
         private static Context ctx = SingletonContext.GetInstance();
         public static void CadastrarItemVenda(ItemVenda itemVenda)
         {
-            ctx.ItemVenda.Add(itemVenda);
+            ctx.ItensVenda.Add(itemVenda);
             ctx.SaveChanges();
 
         }
         public static List<ItemVenda> RetornarItensVenda()
         {
-            return ctx.ItemVenda.ToList();
+            return ctx.ItensVenda.ToList();
         }
     }
 }
