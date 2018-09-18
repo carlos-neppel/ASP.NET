@@ -31,7 +31,20 @@ namespace Ecommerce.Controllers
         [Route("ProdutoPorId/{ProditoId}")]
         public dynamic GetProdutoPorId(int produtoId)
         {
-            return ProdutoDAO.BuscarProdutoPorId(produtoId);
+            Produto produto = ProdutoDAO.BuscarProdutoPorId(produtoId);
+            if(produto != null)
+            {
+                dynamic produtoDinamico = new
+                {
+                    nome = produto.Nome,
+                    Preco = produto.Preco.ToString("C2"),
+                    categoria = produto.Categoria,
+                    dataEnvio = DateTime.Now 
+
+                };
+                return produtoDinamico;
+            }
+            return NotFound();
         }
     }
 }
