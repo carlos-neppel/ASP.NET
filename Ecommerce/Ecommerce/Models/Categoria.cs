@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web;
 
 namespace Ecommerce.Models
-
 {
     [Table("Categorias")]
     public class Categoria

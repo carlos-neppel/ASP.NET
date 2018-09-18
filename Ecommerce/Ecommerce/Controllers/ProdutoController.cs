@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Ecommerce.Controllers
 {
+    [Authorize]
     public class ProdutoController : Controller
     {
         // GET: Produto
@@ -22,7 +23,7 @@ namespace Ecommerce.Controllers
         public ActionResult CadastrarProduto()
         {
             ViewBag.Categorias =
-                new SelectList(CategoriaDAO.RetornarCategorias(),
+                new MultiSelectList(CategoriaDAO.RetornarCategorias(),
                 "CategoriaId", "Nome");
 
             return View();

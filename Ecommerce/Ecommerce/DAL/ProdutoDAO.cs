@@ -11,17 +11,17 @@ namespace Ecommerce.DAL
     {
         private static Context ctx = SingletonContext.GetInstance();
 
-       
+        public static List<Produto> RetornarProdutos()
+        {
+            return ctx.Produtos.
+                Include("Categoria").
+                ToList();
+        }
         public static List<Produto> BuscarProdutosPorCategoria(int? id)
         {
             return ctx.Produtos.
                 Include("Categoria").Where(x => x.Categoria.CategoriaId == id).
                 ToList();
-        }
-
-        internal static List<Produto> RetornarProdutos()
-        {
-            return ctx.Produtos.Include("Categoria").ToList();            
         }
 
         public static bool CadastrarProduto(Produto produto)
